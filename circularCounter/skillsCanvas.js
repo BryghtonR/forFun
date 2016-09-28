@@ -3,51 +3,37 @@ var multiCanvas = [
   {
     title:"HTML",
     canvasName:"canvasHTML",
-    skillLevel: 10,
-    skillCountA: 0,
-    skillCountB: 0
-  },{
+    skillLevel: 20
+    },{
     title:"CSS",
     canvasName:"canvasCSS",
-    skillLevel: 9,
-    skillCountA: 0,
-    skillCountB: 0
+    skillLevel: 39
   },{
     title:"JS",
     canvasName:"canvasJS",
-    skillLevel: 8,
-    skillCountA: 0,
-    skillCountB: 0
+    skillLevel: 15
   },{
     title:"BootStrap",
     canvasName:"canvasBootStrap",
-    skillLevel: 9,
-    skillCountA: 0,
-    skillCountB: 0
+    skillLevel: 28
   },{
     title:"Angular",
     canvasName:"canvasAngularJS",
-    skillLevel: 7,
-    skillCountA: 0,
-    skillCountB: 0
+    skillLevel: 39
   },{
     title:"SASS",
     canvasName:"canvasSASS",
-    skillLevel: 5,
-    skillCountA: 0,
-    skillCountB: 0
+    skillLevel: 4
   },{
     title:"jQuery",
     canvasName:"canvasjQuery",
-    skillLevel: 7,
-    skillCountA: 0,
-    skillCountB: 0
+    skillLevel: 32
   }
 ];
 
 var centerX = 100;
 var centerY = 100;
-var sections = 10;
+var sections = 40;
 var inside = 68;
 var outside = 80;
 var arcLength = .88;
@@ -57,6 +43,11 @@ var sectionsCalc = sections/2;
 var span = outside - inside;
 var center = inside + span/2
 
+for(p=0; p<multiCanvas.length; p++){
+  multiCanvas[p].skillCountA = 0;
+  multiCanvas[p].skillCountB = 0;
+}
+
 //main canvas generation funtion
 $(document).ready(function(){
   function myTimer(){
@@ -64,22 +55,29 @@ $(document).ready(function(){
       var c=document.getElementById(multiCanvas[x].canvasName);
       var ctx=c.getContext("2d");
 
+
       //Constant clearing
       ctx.clearRect(0,0,200,200);
 
       //arc movement counter and growth speed
       if(multiCanvas[x].skillCountA < multiCanvas[x].skillLevel){
         if (multiCanvas[x].skillCountB <= arcLength){
-        multiCanvas[x].skillCountB += multiCanvas[x].skillLevel/50/(multiCanvas[x].skillCountA+1);
+        multiCanvas[x].skillCountB += multiCanvas[x].skillLevel/10/(multiCanvas[x].skillCountA+1);
         } else {
         multiCanvas[x].skillCountB = 0;
         multiCanvas[x].skillCountA ++;
         }
       }
 
+      ctx.lineWidth=30;
+      ctx.strokeStyle="grey";
+      ctx.beginPath();
+      ctx.arc(centerX,centerY,center,0,2*Math.PI);
+      ctx.stroke();
+
       //Inner Text
       ctx.fillStyle = "darkblue";
-      ctx.font= " 28px Arial";
+      ctx.font= " 24px Arial";
       ctx.textAlign="center";
       ctx.clearRect(58,95,83,38);
       ctx.fillText(multiCanvas[x].title, 100, 95);

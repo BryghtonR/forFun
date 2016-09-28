@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+<div>
+  <div>
+    <button ng-click="addX(7)">7</button>
+    <button ng-click="addX(8)">8</button>
+    <button ng-click="addX(9)">9</button>
+  </div>
+  <div>
+    <button ng-click="addX(4)">4</button>
+    <button ng-click="addX(5)">5</button>
+    <button ng-click="addX(6)">6</button>
+  </div>
+  <div>
+    <button ng-click="addX(1)">1</button>
+    <button ng-click="addX(2)">2</button>
+    <button ng-click="addX(3)">3</button>
+  </div>
+  <div>
+    <button ng-click="addX(0)">0</button>
+    <button ng-click="addX(0, 0)">00</button>
+    <button ng-click="removeNum()"><-</button>
+  </div>
+
+  {{paymentNum}}
+  <br><button ng-click="clearNum()">Clear</button>
+</div>
+
+  <!-- scripts -->
+  <script src="app.js"></script>
+</div>
+</body>
+</html>
